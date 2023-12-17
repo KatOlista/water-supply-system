@@ -5,14 +5,11 @@
   "author": "KatOlista",
   "private": true,
   "dependencies": {
-    "@tanstack/react-table": "^8.10.7",
     "ag-grid-community": "^31.0.1",
     "ag-grid-enterprise": "^31.0.1",
     "ag-grid-react": "^31.0.1",
-    "classnames": "^2.3.2",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "react-force-graph-2d": "^1.25.3",
     "react-scripts": "5.0.1",
     "reactflow": "^11.10.1",
     "web-vitals": "^2.1.4"
@@ -49,7 +46,8 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "deploy": "mate-scripts deploy"
   },
   "eslintConfig": {
     "extends": [
