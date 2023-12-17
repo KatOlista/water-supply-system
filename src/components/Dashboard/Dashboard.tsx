@@ -1,4 +1,3 @@
-/* eslint-disable max-len */
 import { useMemo, useState } from 'react';
 import { AgGridReact } from 'ag-grid-react'; // React Grid Logic
 import 'ag-grid-community/styles/ag-grid.css'; // Core CSS
@@ -37,8 +36,10 @@ export const Dashboard = () => {
     <div style={{ marginBottom: 40 }}>
       <h2>Dashboard</h2>
 
-      {/* <div className="ag-theme-quartz" style={{ width: 802, height: 300 }}> */}
-      <div className="ag-theme-quartz" style={{ display: 'grid', width: 800, height: 260 }}>
+      <div
+        className="ag-theme-quartz"
+        style={{ display: 'grid', width: 800, height: 260 }}
+      >
         <AgGridReact
           rowData={rowData}
           columnDefs={colDefs}

@@ -43,11 +43,15 @@
     "typescript-eslint": "0.0.1-alpha.0"
   },
   "scripts": {
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "deploy": "mate-scripts deploy"
+    "lint": "eslint . --color --ext .ts,.tsx --fix",
+    "format": "prettier . --ignore-path .gitignore --write",
+    "fix-style": "npm run format & npm run lint"
   },
   "eslintConfig": {
     "extends": [
