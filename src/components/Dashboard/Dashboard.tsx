@@ -22,7 +22,7 @@ export const Dashboard = () => {
     return {
       name: data.label,
       type: assignment,
-      date: createdAt,
+      date: new Date(createdAt),
       status: state,
     };
   });
@@ -34,10 +34,11 @@ export const Dashboard = () => {
   const [rowData] = useState(nodes);
 
   return (
-    <div>
+    <div style={{ marginBottom: 40 }}>
       <h2>Dashboard</h2>
 
-      <div className="ag-theme-quartz" style={{ width: 802, height: 300 }}>
+      {/* <div className="ag-theme-quartz" style={{ width: 802, height: 300 }}> */}
+      <div className="ag-theme-quartz" style={{ display: 'grid', width: 800, height: 260 }}>
         <AgGridReact
           rowData={rowData}
           columnDefs={colDefs}
