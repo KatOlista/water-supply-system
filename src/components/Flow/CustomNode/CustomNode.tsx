@@ -4,8 +4,8 @@ import { Handle, NodeProps, Position } from 'reactflow';
 const CustomNode = ({
   data,
   isConnectable,
-  targetPosition = Position.Left,
-  sourcePosition = Position.Right,
+  targetPosition = Position.Top,
+  sourcePosition = Position.Bottom,
 }: NodeProps) => {
   return (
     <>

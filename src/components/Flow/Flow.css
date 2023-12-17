@@ -105,7 +105,7 @@
 .react-flow__node {
   position: absolute;
   -webkit-user-select: none;
-     -moz-user-select: none;
+    -moz-user-select: none;
           user-select: none;
   pointer-events: all;
   transform-origin: 0 0;
@@ -274,4 +274,3 @@
   .react-flow__selection:focus-visible {
     outline: none;
   }
-

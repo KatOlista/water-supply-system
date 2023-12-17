@@ -1,3 +1,4 @@
+/* eslint-disable no-alert */
 import { useCallback } from 'react';
 import ReactFlow, {
   Node,
@@ -9,14 +10,19 @@ import ReactFlow, {
   useEdgesState,
 } from 'reactflow';
 
-import { DEFAULT_LINKS, DEFAULT_NODES } from 'services/variables';
-import { getColor } from 'services/helpers';
+import {
+  COORD_NODE_EXTEND,
+  COORD_TRANSLATE_EXTEND,
+  DEFAULT_LINKS,
+  DEFAULT_NODES,
+} from 'services/variables';
+import { getNodes } from 'services/helpers';
 
-import CustomNode from './CustomNode';
+import CustomNode from './CustomNode/CustomNode';
 
 import './Flow.css';
 
-const initialNodes: Node[] = getColor(DEFAULT_NODES);
+const initialNodes: Node[] = getNodes(DEFAULT_NODES);
 
 const initialEdges: Edge[] = DEFAULT_LINKS.map(link => link);
 
@@ -24,29 +30,37 @@ const nodeTypes = {
   custom: CustomNode,
 };
 
-const BasicFlow = () => {
+export const BasicFlow = () => {
   const [nodes, , onNodesChange] = useNodesState(initialNodes);
   const [edges, setEdges, onEdgesChange] = useEdgesState(initialEdges);
 
-  const onConnect = useCallback(
+  const onConnectHandler = useCallback(
     (params: Edge | Connection) => setEdges((els) => addEdge(params, els)),
     [setEdges],
   );
 
-  const onNodeDoubleClick = useCallback(
+  const onNodeDoubleClickHandler = useCallback(
     (
       event: React.MouseEvent<Element, MouseEvent>,
       node: Node<any, string | undefined>,
     ) => {
-      const currentNode = nodes.find((el) => el.id === node.id);
-
-      if (currentNode) {
-        currentNode.state = currentNode.state === 'OK'
-          ? 'ERROR'
-          : 'OK';
-      }
+      alert(`Double clicked node ${node.data.label} `
+      + `in position (${node.position.x}, ${node.position.y})`);
     },
-    [nodes],
+    [],
+  );
+
+  const onNodeContextMenuHandler = useCallback(
+    (
+      event: React.MouseEvent<Element, MouseEvent>,
+      node: Node<any, string | undefined>,
+    ) => {
+      event.preventDefault();
+
+      alert(`Right clicked node ${node.data.label} `
+      + `in position (${node.position.x}, ${node.position.y})`);
+    },
+    [],
   );
 
   return (
@@ -56,18 +70,17 @@ const BasicFlow = () => {
         edges={edges}
         onNodesChange={onNodesChange}
         onEdgesChange={onEdgesChange}
-        onNodeDoubleClick={onNodeDoubleClick}
-        onConnect={onConnect}
+        onNodeDoubleClick={onNodeDoubleClickHandler}
+        onNodeContextMenu={onNodeContextMenuHandler}
+        onConnect={onConnectHandler}
         nodeTypes={nodeTypes}
-        maxZoom={1.5}
+        maxZoom={1.25}
         fitView
-        nodeExtent={[[-300, -100], [800, 800]]}
-        translateExtent={[[0, 0], [500, 700]]}
+        nodeExtent={COORD_NODE_EXTEND}
+        translateExtent={COORD_TRANSLATE_EXTEND}
       >
         <Background />
       </ReactFlow>
     </div>
   );
 };
-
-export default BasicFlow;

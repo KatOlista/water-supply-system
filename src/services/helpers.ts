@@ -1,13 +1,24 @@
 import { Node } from 'reactflow';
+import {
+  DEFAULT_TYPE_COLOR,
+  INPUT_TYPE_COLOR,
+  OUTPUT_TYPE_COLOR,
+} from './variables';
 
-export const getColor = (nodes: Node<any, string | undefined>[]) => {
-  const onOK = '#6ede87';
-  const onERROR = '#e95454';
+const getNodeColor = (node: Node<any, string | undefined>) => {
+  switch (node.type) {
+    case 'input':
+      return INPUT_TYPE_COLOR;
+    case 'output':
+      return OUTPUT_TYPE_COLOR;
+    default:
+      return DEFAULT_TYPE_COLOR;
+  }
+};
 
+export const getNodes = (nodes: Node<any, string | undefined>[]) => {
   return nodes.map(node => {
-    const color = node.state === 'OK'
-      ? onOK
-      : onERROR;
+    const color = getNodeColor(node);
 
     return {
       ...node,

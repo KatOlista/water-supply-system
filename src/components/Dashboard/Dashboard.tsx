@@ -1,18 +1,49 @@
-import { useState } from 'react';
+/* eslint-disable max-len */
+import { useMemo, useState } from 'react';
 import { AgGridReact } from 'ag-grid-react'; // React Grid Logic
 import 'ag-grid-community/styles/ag-grid.css'; // Core CSS
 import 'ag-grid-community/styles/ag-theme-quartz.css'; // Theme
+import { DEFAULT_NODES } from 'services/variables';
 
 export const Dashboard = () => {
-  const [rowData, setRowData] = useState([
-    { mission: "Voyager", company: "NASA", location: "Cape Canaveral", date: "1977-09-05", rocket: "Titan-Centaur ", price: 86580000, successful: true },
-    { mission: "Apollo 13", company: "NASA", location: "Kennedy Space Center", date: "1970-04-11", rocket: "Saturn V", price: 3750000, successful: false },
-    { mission: "Falcon 9", company: "SpaceX", location: "Cape Canaveral", date: "2015-12-22", rocket: "Falcon 9", price: 9750000, successful: true }
+  const [colDefs] = useState([
+    { field: 'name' },
+    { field: 'type' },
+    { field: 'date' },
+    { field: 'status' },
   ]);
+
+  const nodes = DEFAULT_NODES.map(({
+    data,
+    assignment,
+    createdAt,
+    state,
+  }) => {
+    return {
+      name: data.label,
+      type: assignment,
+      date: createdAt,
+      status: state,
+    };
+  });
+
+  const defaultColDef = useMemo(() => ({
+    filter: true,
+  }), []);
+
+  const [rowData] = useState(nodes);
 
   return (
     <div>
       <h2>Dashboard</h2>
+
+      <div className="ag-theme-quartz" style={{ width: 802, height: 300 }}>
+        <AgGridReact
+          rowData={rowData}
+          columnDefs={colDefs}
+          defaultColDef={defaultColDef}
+        />
+      </div>
     </div>
   );
 };
