@@ -1,0 +1,15 @@
+.grid-container {
+  transform: scale(1);
+}
+
+@media(max-width: 640px) {
+  .grid-container {
+    transform: scale(0.7);
+  }
+}
+
+@media(max-width: 425px) {
+  .grid-container {
+    transform: scale(0.5);
+  }
+}

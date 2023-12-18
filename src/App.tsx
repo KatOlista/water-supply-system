@@ -1,19 +1,38 @@
 import { Dashboard } from 'components/Dashboard';
 import './App.css';
 import { BasicFlow } from 'components/Flow/Flow';
-// import { DashboardTanstack } from
-//   'components/Dashboard_tanstack/DashboardTanstack';
+import { ChartPie } from 'components/ChartPie/ChartPie';
 
 function App() {
   return (
     <div className="App">
       <h1>Water supply system</h1>
 
-      {/* <DashboardTanstack /> */}
+      <div className="container">
+        <Dashboard />
+      </div>
 
-      <Dashboard />
+      <div className="container chart-container">
+        <ChartPie />
+      </div>
 
-      <BasicFlow />
+      <div className="pie">
+        <div className="pie-state">
+          <div className="pie-color ok" />
+
+          <span className="pie-state">OK status</span>
+        </div>
+
+        <div className="pie-state">
+          <div className="pie-color error" />
+
+          <span className="pie-state">Error status</span>
+        </div>
+      </div>
+
+      <div className="container graph">
+        <BasicFlow />
+      </div>
     </div>
   );
 }

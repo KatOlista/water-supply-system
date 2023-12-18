@@ -1,6 +1,8 @@
 .flow {
-  max-width: 700px;
+  margin: 0 auto;
+  width: 810px;
   height: 500px;
+  position: relative;
   border: 2px solid gray;
 }
 

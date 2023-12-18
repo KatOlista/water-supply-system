@@ -2,14 +2,16 @@ import { useMemo, useState } from 'react';
 import { AgGridReact } from 'ag-grid-react'; // React Grid Logic
 import 'ag-grid-community/styles/ag-grid.css'; // Core CSS
 import 'ag-grid-community/styles/ag-theme-quartz.css'; // Theme
-import { DEFAULT_NODES } from 'services/variables';
+import { DEFAULT_NODES, columnDefaultWidth } from 'services/variables';
+import { ColDef } from 'ag-grid-community';
+import './Dashboard.css';
 
 export const Dashboard = () => {
-  const [colDefs] = useState([
-    { field: 'name' },
-    { field: 'type' },
-    { field: 'date' },
-    { field: 'status' },
+  const [colDefs] = useState<ColDef[]>([
+    { field: 'name', width: columnDefaultWidth.nameWidth },
+    { field: 'type', width: columnDefaultWidth.typeWidth },
+    { field: 'date', width: columnDefaultWidth.dateWidth },
+    { field: 'status', width: columnDefaultWidth.statusWidth },
   ]);
 
   const nodes = DEFAULT_NODES.map(({
@@ -33,12 +35,14 @@ export const Dashboard = () => {
   const [rowData] = useState(nodes);
 
   return (
-    <div style={{ marginBottom: 40 }}>
+    <div>
       <h2>Dashboard</h2>
 
       <div
-        className="ag-theme-quartz"
-        style={{ display: 'grid', width: 800, height: 260 }}
+        className="ag-theme-quartz grid-container"
+        style={{
+          margin: '0 auto', display: 'grid', width: 595, height: 263,
+        }}
       >
         <AgGridReact
           rowData={rowData}

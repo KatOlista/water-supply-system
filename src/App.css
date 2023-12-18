@@ -1,15 +1,64 @@
 .App {
-  text-align: center;
-  padding-inline: 20px;
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+  padding: 20px;
   display: flex;
   flex-direction: column;
+  box-sizing: border-box;
+  justify-content: space-between;
   align-items: center;
+  text-align: center;
+}
+
+.container {
+  padding: 20px 0;
+  width: 800px;
+  display: flex;
+  box-sizing: border-box;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  overflow: hidden;
+}
+
+.chart-container {
+  display: block;
+}
+
+.pie {
+  display: flex;
+}
+
+.pie-color {
+  width: 20px;
+  height: 20px;
+  display: inline-block;
+  border-radius: 50%;
+}
+
+.pie-state {
+  padding: 5px;
+  display: flex;
+  align-items: center;
+}
+
+.ok {
+  background-color: #42A5F5;
+}
+
+.error {
+  background-color: #FF7043;
+}
+
+.graph {
+  height: 500px;
+}
+
+@media(max-width: 640px) {
+  .container {
+    width: 380px;
+  }
+}
+
+@media(max-width: 425px) {
+  .container {
+    padding: 10px 0;
+    width: 270px;
+  }
 }
