@@ -54,6 +54,10 @@
   .container {
     width: 380px;
   }
+
+  .dashboard {
+    overflow: visible;
+  }
 }
 
 @media(max-width: 425px) {

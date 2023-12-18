@@ -8,7 +8,7 @@ function App() {
     <div className="App">
       <h1>Water supply system</h1>
 
-      <div className="container">
+      <div className="container dashboard">
         <Dashboard />
       </div>
 
