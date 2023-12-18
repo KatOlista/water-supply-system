@@ -2,7 +2,12 @@
 
 [Demo](https://katolista.github.io/water-supply-system/)
 
-This project gives you possibility create your water supply system,check state, move `MouseDown` and remove `Backspace` nodes, create `By MouseDown on down Node output and MouseUp on input another Node` and remove `Backspace` connections. Also you can scale graph
+This project has 3 types of Nodes:
+  - `input`. Only for the source Node
+  - `output`. Only for the endpoint Node
+  - `default`. For Nodes with a source and an endpoint at the same time.
+
+You can simulate water supply system, check Nodes state, move `MouseDown` and remove `Backspace` nodes, create `By MouseDown on down Node output and MouseUp on input another Node` and remove `Backspace` connections. Also you can scale graph
 
 # Getting Started with Create React App
 
