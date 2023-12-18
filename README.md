@@ -1,3 +1,9 @@
+# Wodociag v1
+
+[Demo](https://katolista.github.io/water-supply-system/)
+
+This project gives you possibility create your water supply system,check state, move `MouseDown` and remove `Backspace` nodes, create `By MouseDown on down Node output and MouseUp on input another Node` and remove `Backspace` connections. Also you can scale graph
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
