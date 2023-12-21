@@ -56,13 +56,13 @@
   }
 
   .dashboard {
-    overflow: visible;
+    width: 400px;
   }
 }
 
 @media(max-width: 425px) {
   .container {
     padding: 10px 0;
-    width: 270px;
+    width: 290px;
   }
 }
